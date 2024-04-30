@@ -17,7 +17,7 @@ def run_main_script():
 
 if __name__ == "__main__":
     zip_file_path = 'main.zip'  # Path to the encrypted ZIP file
-    output_path = ''  # Path to extract the contents of the ZIP file
+    output_path = 'extracted_files'  # Path to extract the contents of the ZIP file
     password = os.environ.get("PASSWORD", "")  # Password obtained from environment variable
 
     unzip_password_protected_zip(zip_file_path, output_path, password)
