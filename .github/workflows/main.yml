@@ -26,11 +26,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Unzip main.zip
-        run: unzip -o main.zip
+      - name: Install p7zip
+        run: sudo apt-get update && sudo apt-get install p7zip-full -y
+
+      - name: Extract main.zip
+        run: 7z x main.zip -oextracted_files
           
       - name: Execute Main.py script
-        run: python main.py
+        run: python extracted_files/main.py
         env:
           PLAYLIST_URL: ${{ secrets.PLAYLIST_URL }} # Load the playlist URL from GitHub secrets
           PASSWORD: ${{ secrets.PASSWORD }} # Load the secret password from GitHub secrets
